@@ -80,7 +80,7 @@ const ResetPass = () => {
           render={({ field }) => (
             <FormItem>
               <FormLabel>One-Time Password {"(OTP)"}</FormLabel>
-              <FormControl>
+              {/* <FormControl>
                 <InputOTP
                   maxLength={6}
                   render={({ slots }) => (
@@ -96,7 +96,7 @@ key={index}
                   )}
                   {...field}
                 />
-              </FormControl>
+              </FormControl> */}
               <FormDescription>
                 Please enter the one-time password sent to your Email. Check
                 Spam folders also.
