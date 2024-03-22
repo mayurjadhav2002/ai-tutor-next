@@ -87,10 +87,10 @@ const ResetPass = () => {
                     <InputOTPGroup>
                       {slots.map((slot, index) => (
                         <InputOTPSlot
-                          key={index}
+                        
+key={index}
                           {...slot}
-                          className="w-16 h-10"
-                        />
+                          className="w-16 h-10"                        />
                       ))}{" "}
                     </InputOTPGroup>
                   )}
