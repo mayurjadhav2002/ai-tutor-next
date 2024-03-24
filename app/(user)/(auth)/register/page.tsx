@@ -47,7 +47,7 @@ const RegisterForm = () => {
   async function onSubmit(data: z.infer<typeof FormSchema>) {
     try {
       const response = await axios.post(
-        "http://localhost:8090/user/register",
+        "https://ai-tutor-next-backend.onrender.com/user/register",
         data
       );
       if (response.status === 200) {
