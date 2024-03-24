@@ -14,8 +14,12 @@ import { Badge } from "@/components/ui/badge";
 import axios from "axios";
 import Link from "next/link";
 function PrevLearned() {
-  const userDataString = localStorage.getItem("user"); // Retrieve the user data string from localStorage
-  const user = userDataString ? JSON.parse(userDataString) : null; // Parse the user string into an object or null if it's null
+  let userDataString;
+  if (typeof window !== 'undefined') {
+    // Perform localStorage action
+    userDataString = localStorage.getItem('user')
+  }
+    const user = userDataString ? JSON.parse(userDataString) : null; // Parse the user string into an object or null if it's null
   
   const [Topics, setTopics] = useState([]);
   useEffect(() => {
