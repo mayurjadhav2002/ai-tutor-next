@@ -73,6 +73,10 @@ const Header = () => {
                   <span>Login</span>
                 </Link>
                 
+                <Link href="/register" className="w-full h-9 lg:w-fit group flex items-center rounded-[--btn-border-radius] disabled:border :select-none [&>:not(.sr-only)]:relative :disabled:opacity-20 *:disabled:text-gray-950 disabled:border-gray-200 disabled:bg-gray-100 dark:disabled:border dark:disabled:border-gray-800 disabled:dark:bg-gray-900 dark::disabled:!text-white text-gray-800 hover:bg-gray-100 active:bg-gray-200/75 dark:text-gray-300 dark:hover:bg-gray-500/10 dark:active:bg-gray-500/15 lg:text-sm lg:h-8 px-3.5 justify-center">
+                  <span>Register</span>
+                </Link>
+                
               </div>
             </div>
           </div>

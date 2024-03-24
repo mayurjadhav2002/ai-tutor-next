@@ -26,7 +26,7 @@ function PrevLearned() {
     async function GetAllTopics() {
       try {
         axios
-          .post("http://localhost:8090/topic/getAll", {
+          .post("https://ai-tutor-next-backend.onrender.com/topic/getAll", {
             user_id: user?._id, // User data isnt getting saved inside the coding club
           })
           .then((res) => {

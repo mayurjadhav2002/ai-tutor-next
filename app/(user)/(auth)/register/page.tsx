@@ -19,8 +19,8 @@ import { useState } from "react";
 import { Separator } from "@/components/ui/separator";
 import { FcGoogle } from "react-icons/fc";
 import Link from "next/link";
-import { Checkbox } from "@/components/ui/checkbox";
-
+import Cookies from "js-cookie";
+import axios from "axios";
 const FormSchema = z.object({
   name: z.string().min(3, {
     message: "Please Enter valid name, at least 3 characters",
@@ -44,7 +44,32 @@ const RegisterForm = () => {
     },
   });
 
-  function onSubmit(data: z.infer<typeof FormSchema>) {
+  async function onSubmit(data: z.infer<typeof FormSchema>) {
+    try {
+      const response = await axios.post(
+        "http://localhost:8090/user/register",
+        data
+      );
+      if (response.status === 200) {
+        const userData = response.data.data;
+        const setCookies = await Cookies.set("user", userData);
+        const setAccessToken = await Cookies.set(
+          "access_token",
+          userData.access_token
+        );
+        await localStorage.setItem("user", JSON.stringify(userData));
+        if (setCookies && setAccessToken) {
+          console.log("Login Successful");
+          window.location.href = "/dashboard";
+        }
+      } else {
+        console.log("Some error occurred");
+      }
+    } catch (error) {
+      console.log("Unexpected Error occurred ", error);
+    }
+
+    // Display toast message
     toast({
       title: "You submitted the following values:",
       description: (
@@ -54,6 +79,7 @@ const RegisterForm = () => {
       ),
     });
   }
+
   return (
     <Form {...form}>
       <form

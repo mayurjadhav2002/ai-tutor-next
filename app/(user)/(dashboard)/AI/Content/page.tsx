@@ -21,7 +21,7 @@ function FetchContent() {
   const [content, setContent] = useState();
   useEffect(() => {
     axios
-      .post("http://localhost:8090/explanation/explain", {
+      .post("https://ai-tutor-next-backend.onrender.com/explanation/explain", {
         r_id: r_id && r_id,
         p_id: p_id && p_id,
         topic_id: topic_id && topic_id,

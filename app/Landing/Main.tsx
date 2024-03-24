@@ -24,7 +24,7 @@ function Main() {
               your topic
             </p>
             <div className=" flex items-center justify-center mb-4 space-x-0 md:space-x-2 md:mb-8">
-              <Link href="/login" className="pr-2">
+              <Link href="/signin" className="pr-2">
                 <Button>
                   Login
                   <FaArrowRightLong className="ml-1" />

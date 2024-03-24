@@ -19,7 +19,7 @@ const FetchRoadmap = () => {
         const userDataString = await localStorage.getItem("user"); // Retrieve the user data string from localStorage
         const user = userDataString ? JSON.parse(userDataString) : null; // Parse the user string into an object or null if it's null
 
-        const res = await axios.post("http://localhost:8090/topic/create", {
+        const res = await axios.post("https://ai-tutor-next-backend.onrender.com/topic/create", {
           user_id: user?._id,
           subject: topic,
           nicheSubject: subtopic,
