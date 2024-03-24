@@ -1,24 +1,26 @@
-"use client"
+"use client";
 import React, { useEffect, useState } from "react";
 import Road from "./Road";
-import { useSearchParams } from "next/navigation";
 import axios from "axios";
 import Loading from "@/components/main/Loading";
+import { useSearchParams } from "next/navigation";
 
-const FetchPage = () => {
+const FetchRoadmap = () => {
   const searchParams = useSearchParams();
-  const [loading, setLoading] = useState(true);
-  const [roadmap, setRoadmap] = useState([]);
-  const user = JSON.parse(localStorage.getItem("user")) || {}; // Parse the user string into an object
-
   const topic = searchParams.get("topic");
   const subtopic = searchParams.get("subtopic");
+
+  const [loading, setLoading] = useState(true);
+  const [roadmap, setRoadmap] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
+        const userDataString = await localStorage.getItem("user"); // Retrieve the user data string from localStorage
+        const user = userDataString ? JSON.parse(userDataString) : null; // Parse the user string into an object or null if it's null
+
         const res = await axios.post("http://localhost:8090/topic/create", {
-          user_id: user._id,
+          user_id: user?._id,
           subject: topic,
           nicheSubject: subtopic,
         });
@@ -33,8 +35,7 @@ const FetchPage = () => {
     if (topic && subtopic) {
       fetchData();
     }
-
-  }, [subtopic, topic, user._id]);
+  }, [subtopic, topic]);
 
   return (
     <div>
@@ -47,12 +48,12 @@ const FetchPage = () => {
   );
 };
 
-function Page() {
+const Page = () => {
   return (
-    <div>
-      <FetchPage />
-    </div>
+    <React.Suspense fallback={<Loading msg={"Loading..."} />}>
+      <FetchRoadmap />
+    </React.Suspense>
   );
-}
+};
 
 export default Page;

@@ -9,7 +9,8 @@ export default function AppStore({ children }) {
 
   useEffect(() => {
     async function fetchUser() {
-      const userdata = localStorage.getItem("user");
+      const store = localStorage.getItem("user");
+      const userdata = store ? JSON.parse(store) : null
       if (userdata) {
         setUser(userdata);
       }

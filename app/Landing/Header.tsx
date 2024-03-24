@@ -38,7 +38,7 @@ const Header = () => {
                       href="#"
                       className="block md:px-4 transition hover:text-primary-600 dark:hover:text-primary-400"
                     >
-                      <span>Product</span>
+                      <span>Learnings</span>
                     </a>
                   </li>
                   <li>
@@ -46,7 +46,7 @@ const Header = () => {
                       href="#"
                       className="block md:px-4 transition hover:text-primary-600 dark:hover:text-primary-400"
                     >
-                      <span>Playground</span>
+                      <span>Courses</span>
                     </a>
                   </li>
                   <li>
@@ -54,7 +54,7 @@ const Header = () => {
                       href="#"
                       className="block md:px-4 transition hover:text-primary-600 dark:hover:text-primary-400"
                     >
-                      <span>Docs</span>
+                      <span>About</span>
                     </a>
                   </li>
                   <li>
@@ -69,7 +69,7 @@ const Header = () => {
               </div>
 
               <div className="w-full space-y-2 gap-2 pt-6 pb-4 lg:pb-0 border-t border-[--ui-light-border-color] dark:border-[--ui-dark-border-color] items-center flex flex-col lg:flex-row lg:space-y-0 lg:w-fit lg:border-l lg:border-t-0 lg:pt-0 lg:pl-2">
-                <Link href="/signin" className="w-full h-9 lg:w-fit group flex items-center rounded-[--btn-border-radius] disabled:border *:select-none [&>*:not(.sr-only)]:relative *:disabled:opacity-20 *:disabled:text-gray-950 disabled:border-gray-200 disabled:bg-gray-100 dark:disabled:border dark:disabled:border-gray-800 disabled:dark:bg-gray-900 dark:*:disabled:!text-white text-gray-800 hover:bg-gray-100 active:bg-gray-200/75 dark:text-gray-300 dark:hover:bg-gray-500/10 dark:active:bg-gray-500/15 lg:text-sm lg:h-8 px-3.5 justify-center">
+                <Link href="/signin" className="w-full h-9 lg:w-fit group flex items-center rounded-[--btn-border-radius] disabled:border :select-none [&>:not(.sr-only)]:relative :disabled:opacity-20 *:disabled:text-gray-950 disabled:border-gray-200 disabled:bg-gray-100 dark:disabled:border dark:disabled:border-gray-800 disabled:dark:bg-gray-900 dark::disabled:!text-white text-gray-800 hover:bg-gray-100 active:bg-gray-200/75 dark:text-gray-300 dark:hover:bg-gray-500/10 dark:active:bg-gray-500/15 lg:text-sm lg:h-8 px-3.5 justify-center">
                   <span>Login</span>
                 </Link>
                 

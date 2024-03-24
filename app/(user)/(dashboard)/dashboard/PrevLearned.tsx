@@ -14,8 +14,9 @@ import { Badge } from "@/components/ui/badge";
 import axios from "axios";
 import Link from "next/link";
 function PrevLearned() {
-  const user = JSON.parse(localStorage.getItem("user")); // Parse the user string into an object
-
+  const userDataString = localStorage.getItem("user"); // Retrieve the user data string from localStorage
+  const user = userDataString ? JSON.parse(userDataString) : null; // Parse the user string into an object or null if it's null
+  
   const [Topics, setTopics] = useState([]);
   useEffect(() => {
     async function GetAllTopics() {
@@ -62,10 +63,10 @@ function PrevLearned() {
                   </TableCell>
                   <TableCell>
                     <Link
-                      href={`/AI/Roadmap?topic=${topic.subject}&subtopic=${topic.nicheSubject}`}
+                      href={`/AI/Roadmap?topic=${topic && topic.subject}&subtopic=${topic && topic.nicheSubject}`}
                       key={index}
                     >
-                      <b>{topic.subject}</b> for <i>{topic.nicheSubject}</i>
+                      <b>{topic && topic.subject}</b> for <i>{topic && topic.nicheSubject}</i>
                     </Link>
                   </TableCell>
                   <TableCell className="text-right">14 days ago</TableCell>

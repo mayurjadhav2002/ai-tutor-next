@@ -10,7 +10,7 @@ const fontSans = FontSans({
 });
 
 export const metadata: Metadata = {
-  title: "CodeAI",
+  title: "AITutor",
   description: "AI for your Leetcode",
 };
 

@@ -2,12 +2,12 @@
 import Loading from "@/components/main/Loading";
 import axios from "axios";
 import { useSearchParams } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import "./style.min.css";
 
-function Page() {
+function FetchContent() {
   const searchParams = useSearchParams();
   const r_id = searchParams.get("r_id"); //roadmap id
   const p_id = searchParams.get("p_id"); // projectid
@@ -19,43 +19,27 @@ function Page() {
 
   const [loading, setLoading] = useState(true);
   const [content, setContent] = useState();
-
   useEffect(() => {
-    async function fetchData() {
-      axios
-        .post("http://localhost:8090/explanation/explain", {
-          r_id: r_id && r_id,
-          p_id: p_id && p_id,
-          topic_id: topic_id && topic_id,
-          user_id: UserID && UserID,
-          topic: topic && topic,
-          subject: subject && subject,
-          nicheSubject: nicheSubject && nicheSubject,
-        })
-        .then((res) => {
-          setLoading(false);
-          console.log(res);
-          setContent(res.data.explain);
-        })
-        .then((result) => console.log("Result printed"))
-        .catch((error) => {
-          console.log("Error occurred while making the request:", error);
-        });
-    }
-
-    if (
-      [r_id, p_id, topic_id, UserID, subject, nicheSubject, topic].some(
-        (param) => param === undefined
-      )
-    ) {
-      // Refresh the page
-      window.location.reload();
-    } else {
-      // Fetch data if all parameters are defined
-      fetchData();
-    }
+    axios
+      .post("http://localhost:8090/explanation/explain", {
+        r_id: r_id && r_id,
+        p_id: p_id && p_id,
+        topic_id: topic_id && topic_id,
+        user_id: UserID && UserID,
+        topic: topic && topic,
+        subject: subject && subject,
+        nicheSubject: nicheSubject && nicheSubject,
+      })
+      .then((res) => {
+        setLoading(false);
+        console.log(res);
+        setContent(res.data.explain);
+      })
+      .then((result) => console.log("Result printed"))
+      .catch((error) => {
+        console.log("Error occurred while making the request:", error);
+      });
   }, [r_id, p_id, topic_id, UserID, topic, subject, nicheSubject]);
-
   return (
     <div className="page-styles">
       {loading ? (
@@ -64,6 +48,14 @@ function Page() {
         <Markdown remarkPlugins={[remarkGfm]}>{content}</Markdown>
       )}
     </div>
+  );
+}
+
+function Page() {
+  return (
+    <Suspense fallback={<Loading msg={"Hang IN! while we are Loading the Content"}/>}>
+      <FetchContent />
+    </Suspense>
   );
 }
 

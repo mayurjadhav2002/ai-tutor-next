@@ -13,27 +13,26 @@ function Main() {
             <h1 className="mb-8 text-4xl font-extrabold leading-none tracking-normal text-gray-900 dark:text-white md:text-6xl md:tracking-tight">
               <span>Start</span>{" "}
               <span className="block w-full py-2 text-transparent bg-clip-text leading-12 bg-gradient-to-r from-blue-400 to-purple-500 lg:inline">
-                Your Project Journey
+                Your Learning Journey
               </span>{" "}
               <span>
-                with <span className="text-blue-500">P</span>rogress
+                with <span className="text-blue-500">AI</span>tutor
               </span>{" "}
             </h1>
             <p className="px-0 mb-8 text-lg text-gray-600 md:text-xl lg:px-24">
-              Experience a complete project management solution for agile teams,
-              featuring dynamic sprint planning, team collaboration, and an
-              intuitive interface.
+              Experience a complete E-learning solution for your growth in Computer Science. Discover the roadmap solution for learning
+              your topic
             </p>
             <div className=" flex items-center justify-center mb-4 space-x-0 md:space-x-2 md:mb-8">
               <Link href="/login" className="pr-2">
                 <Button>
-                  Get Started
+                  Login
                   <FaArrowRightLong className="ml-1" />
                 </Button>
               </Link>
               <Link  href="https://github.com/mayurjadhav2002/progress" target="blank">
                 <Button variant="secondary">
-                  Install Locally
+                  Learn more
                   <MdOutlineInstallDesktop className="ml-1" />
                 </Button>
               </Link>
