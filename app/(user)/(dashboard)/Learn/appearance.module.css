@@ -1,0 +1,32 @@
+/* appearance.module.css */
+.appearance [type=radio] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .appearance [type=radio] + div {
+    cursor: pointer;
+  }
+  
+  .appearance [type=radio]:checked + div {
+    outline: 2px solid rgb(96, 80, 243);
+  }
+  
+
+  .appearance2 [type=radio] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .appearance2 [type=radio] + div {
+    cursor: pointer;
+  }
+  
+  .appearance2 [type=radio]:checked + div {
+    outline: 2px solid rgb(16, 226, 58);
+  }
+  

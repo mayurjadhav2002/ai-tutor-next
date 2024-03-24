@@ -19,7 +19,9 @@ import { useState } from "react";
 import { Separator } from "@/components/ui/separator";
 import { FcGoogle } from "react-icons/fc";
 import Link from "next/link";
-
+import axios from "axios";
+import Cookies from "js-cookie";
+import { redirect } from "next/navigation";
 const FormSchema = z.object({
   email: z.string().email({
     message: "Please enter a valid email address.",
@@ -40,7 +42,32 @@ const RegisterForm = () => {
     },
   });
 
-  function onSubmit(data: z.infer<typeof FormSchema>) {
+  async function onSubmit(data: z.infer<typeof FormSchema>) {
+    try {
+      const response = await axios.post(
+        "http://localhost:8090/user/login",
+        data
+      );
+      if (response.status === 200) {
+        const userData = response.data.data;
+        const setCookies = await Cookies.set("user", userData);
+        const setAccessToken = await Cookies.set(
+          "access_token",
+          userData.access_token
+        );
+        await localStorage.setItem("user", JSON.stringify(userData));
+        if (setCookies && setAccessToken) {
+          console.log("Login Successful");
+          window.location.href = "/dashboard";
+        }
+      } else {
+        console.log("Some error occurred");
+      }
+    } catch (error) {
+      console.log("Unexpected Error occurred ", error);
+    }
+
+    // Display toast message
     toast({
       title: "You submitted the following values:",
       description: (
@@ -50,6 +77,7 @@ const RegisterForm = () => {
       ),
     });
   }
+
   return (
     <Form {...form}>
       <form
@@ -130,7 +158,7 @@ export default function page() {
             src=""
             alt="logo"
           /> */}
-          CareerAI
+          AITeach
         </Link>
         <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
           <div className="p-6 space-y-3 md:space-y-5 sm:p-8">

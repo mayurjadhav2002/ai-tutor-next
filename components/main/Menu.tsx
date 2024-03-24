@@ -1,19 +1,5 @@
-import {
-  Menubar,
-  MenubarCheckboxItem,
-  MenubarContent,
-  MenubarItem,
-  MenubarLabel,
-  MenubarMenu,
-  MenubarRadioGroup,
-  MenubarRadioItem,
-  MenubarSeparator,
-  MenubarShortcut,
-  MenubarSub,
-  MenubarSubContent,
-  MenubarSubTrigger,
-  MenubarTrigger,
-} from "../ui/menubar";
+"use client"
+
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { Button } from "../ui/button";
 import {
@@ -42,7 +28,7 @@ function UserNav() {
       <DropdownMenuContent className="w-56" align="end" forceMount>
         <DropdownMenuLabel className="font-normal">
           <div className="flex flex-col space-y-1">
-            <p className="text-sm font-medium leading-none">shadcn</p>
+            <p className="text-sm font-medium leading-none">user</p>
             <p className="text-xs leading-none text-muted-foreground">
               m@example.com
             </p>
@@ -75,13 +61,13 @@ function UserNav() {
 }
 export default function Menu() {
   return (
-    <div className=" border-b  px-2 lg:px-4 h-16 bg-white dark:bg-dark ">
+    <div className=" border-b  px-2 z-2 lg:px-4 h-16 bg-white dark:bg-dark ">
       <div className="flex h-16 items-center px-4">
         <div className="flex items-center gap-5">
-          <h1 className="font-semibold">CareerAI</h1>
+          <Link href="/dashboard" className="font-semibold">AITeach</Link>
           <nav className="flex items-center space-x-4 lg:space-x-6">
             <Link
-              href="/examples/dashboard"
+              href="/dashboard"
               className="text-sm font-medium transition-colors hover:text-primary"
             >
               Overview
@@ -99,7 +85,7 @@ export default function Menu() {
               Products
             </Link>
             <Link
-              href="/examples/dashboard"
+              href="/dashboard"
               className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
             >
               Settings

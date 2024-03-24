@@ -1,0 +1,128 @@
+
+/* Wrap styles within a unique class */
+.page-styles {
+  * {
+    line-height: 1.6;
+  }
+
+  h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    margin: 2rem 0 1rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin: 2rem 0 1rem;
+    text-decoration: underline;
+  }
+
+  h3 {
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin: 1.5rem 0;
+  }
+
+  h4 {
+    font-size: 1rem;
+    font-weight: 400;
+    margin: 1rem 0;
+  }
+
+  /* Style links */
+  a {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  
+  a:hover {
+    color: #0056b3;
+  }
+
+  /* Style paragraphs */
+  p {
+    margin-bottom: 1rem;
+  }
+
+  /* Style images */
+  img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 1rem;
+  }
+
+  /* Style horizontal rules */
+  hr {
+    border: 0;
+    border-top: 1px solid #dddddd;
+    margin: 1rem 0;
+  }
+
+  /* Style unordered lists */
+  ul {
+    list-style-type: disc;
+    padding-left: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  /* Style ordered lists */
+  ol {
+    list-style-type: decimal;
+    padding-left: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  /* Style list items */
+  li {
+    margin-bottom: 0.5rem;
+  }
+
+  /* Style preformatted text */
+  pre {
+    width: 100%;
+    border: 1px solid #dddddd;
+    background-color: #f9f9f9;
+    padding: 1rem;
+    overflow-x: auto;
+    margin-bottom: 1rem;
+  }
+
+  /* Hover effect on preformatted text */
+  pre:hover {
+    background-color: #f2f2f2;
+  }
+
+  /* Style tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin-bottom: 1rem;
+  }
+
+  /* Style table headers */
+  th {
+    background-color: #f2f2f2;
+    text-align: left;
+    padding: 0.5rem;
+  }
+
+  /* Style table rows */
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+
+  /* Style table data cells */
+  td {
+    padding: 0.5rem;
+    border: 1px solid #dddddd;
+  }
+
+  /* Hover effect on table rows */
+  tr:hover {
+    background-color: #dddddd;
+  }
+}
