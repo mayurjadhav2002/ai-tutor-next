@@ -3,9 +3,9 @@ import Loading from "@/components/main/Loading";
 import axios from "axios";
 import { useSearchParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
-import Markdown from 'react-markdown'
-import remarkGfm from 'remark-gfm'
-import './style.min.css';
+import Markdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import "./style.min.css";
 
 function Page() {
   const searchParams = useSearchParams();
@@ -21,32 +21,48 @@ function Page() {
   const [content, setContent] = useState();
 
   useEffect(() => {
+    async function fetchData() {
+      axios
+        .post("http://localhost:8090/explanation/explain", {
+          r_id: r_id && r_id,
+          p_id: p_id && p_id,
+          topic_id: topic_id && topic_id,
+          user_id: UserID && UserID,
+          topic: topic && topic,
+          subject: subject && subject,
+          nicheSubject: nicheSubject && nicheSubject,
+        })
+        .then((res) => {
+          setLoading(false);
+          console.log(res);
+          setContent(res.data.explain);
+        })
+        .then((result) => console.log("Result printed"))
+        .catch((error) => {
+          console.log("Error occurred while making the request:", error);
+        });
+    }
 
-    axios
-      .post("http://localhost:8090/explanation/explain", {
-        r_id: r_id && r_id,
-        p_id: p_id && p_id,
-        topic_id: topic_id && topic_id,
-        user_id: UserID && UserID,
-        topic: topic && topic,
-        subject: subject && subject,
-        nicheSubject: nicheSubject && nicheSubject,
-      })
-      .then((res) => {
-        setLoading(false);
-        console.log(res)
-        setContent(res.data.explain);
-      }).then(result=>console.log("Result printed"))
-      .catch((error) => {
-        console.log("Error occurred while making the request:", error);
-      });
+    if (
+      [r_id, p_id, topic_id, UserID, subject, nicheSubject, topic].some(
+        (param) => param === undefined
+      )
+    ) {
+      // Refresh the page
+      window.location.reload();
+    } else {
+      // Fetch data if all parameters are defined
+      fetchData();
+    }
   }, [r_id, p_id, topic_id, UserID, topic, subject, nicheSubject]);
 
   return (
     <div className="page-styles">
-      {loading ? <Loading msg={"Loading the Content"} /> : 
-      <Markdown remarkPlugins={[remarkGfm]}>{content}</Markdown>
-      }
+      {loading ? (
+        <Loading msg={"Loading the Content"} />
+      ) : (
+        <Markdown remarkPlugins={[remarkGfm]}>{content}</Markdown>
+      )}
     </div>
   );
 }

@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
 import axios from "axios";
+import Link from "next/link";
 function PrevLearned() {
   const user = JSON.parse(localStorage.getItem("user")); // Parse the user string into an object
 
@@ -48,23 +49,29 @@ function PrevLearned() {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {Topics.map((topic, index) => {
-            const progress = Math.floor(Math.random() * 101);
-            const status = progress === 100 ? "Completed" : "Pending";
+          {Topics &&
+            Topics.map((topic, index) => {
+              const progress = Math.floor(Math.random() * 101);
+              const status = progress === 100 ? "Completed" : "Pending";
 
-            return (
-              <TableRow key={index}>
-                <TableCell className="font-medium">{progress}%</TableCell>
-                <TableCell>
-                  <Badge variant="outline">{status}</Badge>
-                </TableCell>
-                <TableCell>
-                  <b>{topic.subject}</b> for <i>{topic.nicheSubject}</i>
-                </TableCell>
-                <TableCell className="text-right">14 days ago</TableCell>
-              </TableRow>
-            );
-          })}
+              return (
+                <TableRow key={index}>
+                  <TableCell className="font-medium">{progress}%</TableCell>
+                  <TableCell>
+                    <Badge variant="outline">{status}</Badge>
+                  </TableCell>
+                  <TableCell>
+                    <Link
+                      href={`/AI/Roadmap?topic=${topic.subject}&subtopic=${topic.nicheSubject}`}
+                      key={index}
+                    >
+                      <b>{topic.subject}</b> for <i>{topic.nicheSubject}</i>
+                    </Link>
+                  </TableCell>
+                  <TableCell className="text-right">14 days ago</TableCell>
+                </TableRow>
+              );
+            })}
         </TableBody>
       </Table>
     </div>
