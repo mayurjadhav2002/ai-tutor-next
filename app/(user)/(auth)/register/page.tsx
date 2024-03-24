@@ -50,7 +50,8 @@ const RegisterForm = () => {
         "https://ai-tutor-next-backend.onrender.com/user/register",
         data
       );
-      if (response.status === 200) {
+      // console.log(response)
+      if (response.status === 201) {
         const userData = response.data.data;
         const setCookies = await Cookies.set("user", userData);
         const setAccessToken = await Cookies.set(
